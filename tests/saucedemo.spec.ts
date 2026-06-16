@@ -7,6 +7,7 @@ test.describe("Login page", () => {
   });
 
   // Login page tests
+  // test
   
   test("successful login redirects to inventory", async ({ page }) => {
     await page.getByPlaceholder("Username").fill("standard_user");
