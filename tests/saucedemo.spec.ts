@@ -6,8 +6,8 @@ test.describe("Login page", () => {
     await page.goto("https://www.saucedemo.com");
   });
 
-   // Login page tests 1
-
+  // Login page tests
+  
   test("successful login redirects to inventory", async ({ page }) => {
     await page.getByPlaceholder("Username").fill("standard_user");
     await page.getByPlaceholder("Password").fill("secret_sauce");
