@@ -7,6 +7,7 @@ test.describe("Login page", () => {
   });
 
   // Login page tests
+  // test
   
   test("successful login redirects to inventory", async ({ page }) => {
     await page.getByPlaceholder("Username").fill("standard_user");
@@ -26,6 +27,17 @@ test.describe("Login page", () => {
       "Error should appear for wrong credentials"
     ).toBeVisible();
   });
+
+  test("locked_out_user sees specific error message", async ({ page }) => {
+  await page.getByPlaceholder("Username").fill("locked_out_user");
+  await page.getByPlaceholder("Password").fill("secret_sauce");
+  await page.getByRole("button", { name: "Login" }).click();
+
+  await expect(
+    page.locator('[data-test="error"]'),
+    "Locked user should see locked out error"
+  ).toContainText("Sorry, this user has been locked out.");
+});
 
   test("empty form shows validation error", async ({ page }) => {
     await page.getByRole("button", { name: "Login" }).click();
